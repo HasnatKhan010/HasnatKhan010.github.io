@@ -5,9 +5,10 @@ A separate, framework-free portfolio designed for GitHub Pages. It uses plain HT
 ## What it includes
 
 - GitHub-inspired profile and repository layout
-- Live public repositories from `HasnatKhan010`
+- Live public repositories from `HasnatKhan010`, refreshed every five minutes while the page is open
 - Six curated pinned projects with verified outcomes
-- A 15-minute browser cache and a bundled offline fallback
+- A section-aware animated panda guide with reduced-motion support
+- A five-minute browser cache and a bundled offline fallback
 - Repository search, language filters, sorting, and shareable section hashes
 - Experience, education, verified credentials, skills, résumé, and contact links
 - Light and dark themes

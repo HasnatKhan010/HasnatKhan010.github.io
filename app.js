@@ -3,8 +3,18 @@
 
   const data = window.PORTFOLIO_DATA;
   const state = { repositories: [], source: "GitHub", query: "", language: "", sort: "featured" };
+  const repositoryCacheKey = "hasnat-github-portfolio-repos-v2";
+  const repositoryRefreshMs = 5 * 60 * 1000;
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+  const pandaMessages = {
+    overview: "Start here — Hasnat's strongest work is pinned below.",
+    repositories: "New public projects sync from GitHub automatically.",
+    experience: "Follow the timeline for roles, outcomes, and evidence.",
+    credentials: "Open each skill group to see where the tools were used."
+  };
+  let pandaTimer;
 
   const languageColors = {
     Python: "#3572A5",
@@ -59,16 +69,15 @@
     return response.json();
   }
 
-  async function loadRepositories() {
-    const cacheKey = "hasnat-github-portfolio-repos-v1";
+  async function loadRepositories(forceLive = false) {
     try {
-      const cached = JSON.parse(localStorage.getItem(cacheKey) || "null");
-      if (cached && Date.now() - cached.savedAt < 15 * 60 * 1000 && Array.isArray(cached.repositories)) {
-        state.source = "GitHub · cached 15 min";
+      const cached = JSON.parse(localStorage.getItem(repositoryCacheKey) || "null");
+      if (!forceLive && cached && Date.now() - cached.savedAt < repositoryRefreshMs && Array.isArray(cached.repositories)) {
+        state.source = "GitHub · cached up to 5 min";
         return cached.repositories.map(normaliseRepository);
       }
     } catch (_) {
-      localStorage.removeItem(cacheKey);
+      localStorage.removeItem(repositoryCacheKey);
     }
 
     const requests = [
@@ -87,7 +96,7 @@
       const unique = [...new Map(live.map((repository) => [repository.full_name, repository])).values()]
         .filter((repository) => !repository.fork)
         .map(normaliseRepository);
-      localStorage.setItem(cacheKey, JSON.stringify({ savedAt: Date.now(), repositories: unique }));
+      localStorage.setItem(repositoryCacheKey, JSON.stringify({ savedAt: Date.now(), repositories: unique }));
       state.source = results.some((result) => result.status === "rejected")
         ? "GitHub · partial live result"
         : "GitHub · live public data";
@@ -230,12 +239,57 @@
 
   function populateLanguageFilter() {
     const select = $("#language-filter");
+    const selected = state.language;
+    select.replaceChildren();
+    const all = document.createElement("option");
+    all.value = "";
+    all.textContent = "All languages";
+    select.append(all);
     const languages = [...new Set(state.repositories.map((repository) => repository.language).filter(Boolean))].sort();
     for (const language of languages) {
       const option = document.createElement("option");
       option.value = language;
       option.textContent = language;
       select.append(option);
+    }
+    select.value = selected;
+    if (selected && select.value !== selected) state.language = "";
+  }
+
+  function updatePanda(tabName, show = true) {
+    const guide = $("#panda-guide");
+    const message = $("#panda-message");
+    if (!guide || !message) return;
+
+    const count = state.repositories.length;
+    message.textContent = tabName === "repositories" && count
+      ? `${count} public repositories loaded. New projects sync automatically.`
+      : pandaMessages[tabName] || pandaMessages.overview;
+
+    if (show) {
+      clearTimeout(pandaTimer);
+      guide.classList.remove("waving");
+      guide.classList.add("speaking", "waving");
+      pandaTimer = setTimeout(() => guide.classList.remove("speaking", "waving"), 4200);
+    }
+  }
+
+  function applyRepositories(repositories) {
+    state.repositories = repositories;
+    $("#repo-count").textContent = repositories.length;
+    populateLanguageFilter();
+    renderPinned();
+    renderRepositories();
+    const activeTab = $(".tab.active")?.dataset.tab || "overview";
+    updatePanda(activeTab, false);
+  }
+
+  async function refreshRepositories() {
+    if (document.visibilityState === "hidden") return;
+    try {
+      applyRepositories(await loadRepositories(true));
+    } catch (error) {
+      console.warn("Repository refresh skipped", error);
     }
   }
 
@@ -303,6 +357,7 @@
     });
     if (updateHash) history.replaceState(null, "", `#${name}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
+    updatePanda(name);
   }
 
   function installInteractions() {
@@ -340,6 +395,18 @@
       localStorage.setItem("hasnat-portfolio-theme", root.dataset.theme);
       updateThemeLabel();
     });
+
+    const pandaButton = $("#panda-button");
+    const pandaGuide = $("#panda-guide");
+    pandaButton.addEventListener("click", () => {
+      const activeTab = $(".tab.active")?.dataset.tab || "overview";
+      const willOpen = !pandaGuide.classList.contains("speaking");
+      if (willOpen) updatePanda(activeTab);
+      else {
+        clearTimeout(pandaTimer);
+        pandaGuide.classList.remove("speaking", "waving");
+      }
+    });
   }
 
   async function init() {
@@ -357,10 +424,9 @@
       state.repositories = [];
       state.source = "Repository data unavailable";
     }
-    $("#repo-count").textContent = state.repositories.length;
-    populateLanguageFilter();
-    renderPinned();
-    renderRepositories();
+    applyRepositories(state.repositories);
+    setInterval(refreshRepositories, repositoryRefreshMs);
+    updatePanda($(".tab.active")?.dataset.tab || "overview");
   }
 
   init();
