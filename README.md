@@ -1,5 +1,9 @@
 # Hasnat Khan · GitHub-style portfolio
-
+<p align="center">
+  <a href="https://hasnatkhan010.github.io/">
+    <img src="https://img.shields.io/badge/Visit_My_Portfolio-007EC6?style=for-the-badge&logo=safari&logoColor=white" alt="Portfolio Link">
+  </a>
+</p>
 A separate, framework-free portfolio designed for GitHub Pages. It uses plain HTML, CSS, and JavaScript, so there is no build step and no server to maintain.
 
 ## What it includes
