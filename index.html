@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0d1117" />
+    <meta
+      name="description"
+      content="Hasnat Khan — AI/ML engineer building retrieval, MLOps, and data systems."
+    />
+    <title>Hasnat Khan · AI/ML Engineer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%230d1117%22/><path d=%22M17 17v30M47 17v30M17 32h30%22 stroke=%22%2358a6ff%22 stroke-width=%228%22/></svg>" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="data.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#overview" aria-label="Hasnat Khan home">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="8" cy="7" r="3" />
+            <circle cx="24" cy="25" r="3" />
+            <circle cx="24" cy="7" r="3" />
+            <path d="M8 10v7c0 4.4 3.6 8 8 8h5M8 17c0-5.5 4.5-10 10-10h3" />
+          </svg>
+          <span>hasnatkhan010</span>
+        </a>
+
+        <label class="header-search" for="global-search">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m11.5 10.5 3 3-1 1-3-3a5.5 5.5 0 1 1 1-1ZM7 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" /></svg>
+          <input id="global-search" type="search" placeholder="Find a repository…" autocomplete="off" />
+          <kbd>/</kbd>
+        </label>
+
+        <nav class="header-links" aria-label="External links">
+          <a href="https://github.com/HasnatKhan010" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="assets/HasnatKhan_CV.pdf">Résumé</a>
+          <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to light theme">
+            <svg class="theme-icon theme-icon-sun" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 .75v2M8 13.25v2M.75 8h2M13.25 8h2M2.87 2.87l1.4 1.4M11.73 11.73l1.4 1.4M13.13 2.87l-1.4 1.4M4.27 11.73l-1.4 1.4"/></svg>
+            <svg class="theme-icon theme-icon-moon" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.8 10.7A5.75 5.75 0 0 1 5.3 3.2a5.75 5.75 0 1 0 7.5 7.5Z"/></svg>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <div class="profile-nav-wrap">
+        <nav class="profile-nav" aria-label="Portfolio sections" role="tablist">
+          <button class="tab active" type="button" role="tab" aria-selected="true" aria-controls="overview" data-tab="overview">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2.75A1.75 1.75 0 0 1 3.75 1h8.5A1.75 1.75 0 0 1 14 2.75v10.5A1.75 1.75 0 0 1 12.25 15h-8.5A1.75 1.75 0 0 1 2 13.25ZM3.5 3v10h9V3ZM5 5h6v1.25H5Zm0 3h6v1.25H5Zm0 3h4v1.25H5Z"/></svg>
+            Overview
+          </button>
+          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="repositories" data-tab="repositories">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2.75C2 1.78 2.78 1 3.75 1h8.5c.97 0 1.75.78 1.75 1.75v10.5c0 .97-.78 1.75-1.75 1.75h-8.5A1.75 1.75 0 0 1 2 13.25ZM3.5 3v10h9V3ZM5 5h4v1.25H5Zm0 3h6v1.25H5Z"/></svg>
+            Repositories <span class="counter" id="repo-count">—</span>
+          </button>
+          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="experience" data-tab="experience">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 2V1h6v1h2.25C14.22 2 15 2.78 15 3.75v8.5c0 .97-.78 1.75-1.75 1.75H2.75A1.75 1.75 0 0 1 1 12.25v-8.5C1 2.78 1.78 2 2.75 2Zm1.5 0h3V1.5h-3ZM2.5 7v5.25c0 .14.11.25.25.25h10.5c.14 0 .25-.11.25-.25V7H10v1.25H6V7Zm0-1.5H6V4.25h4V5.5h3.5V3.75a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25Z"/></svg>
+            Experience
+          </button>
+          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="credentials" data-tab="credentials">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1 1.5 4.25 8 7.5l5-2.5v4h1.5V4.25Zm-4 6.1v3.15C4 11.77 5.79 13 8 13s4-1.23 4-2.75V7.1L8 9.1Z"/></svg>
+            Credentials
+          </button>
+        </nav>
+      </div>
+
+      <div class="page-shell">
+        <aside class="profile-card" aria-label="Profile">
+          <div class="avatar-wrap">
+            <img src="assets/profile.webp" width="320" height="291" alt="Hasnat Khan, AI/ML engineer" />
+            <span class="availability-dot" title="Available for roles"></span>
+          </div>
+          <h1>Hasnat Khan</h1>
+          <p class="username">HasnatKhan010</p>
+          <p class="bio">AI/ML engineer building retrieval systems, production pipelines, and data tools that survive messy input.</p>
+          <a class="primary-button" href="mailto:hk5610504@gmail.com">Contact me</a>
+          <ul class="profile-meta">
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15s5-4.8 5-9A5 5 0 0 0 3 6c0 4.2 5 9 5 9Zm0-6.5A2.5 2.5 0 1 1 8 3a2.5 2.5 0 0 1 0 5.5Z"/></svg>Islamabad, Pakistan · UTC+5</li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h11A1.5 1.5 0 0 1 15 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 12.5Zm1.5 0L8 7.7l5.5-4.2Zm11 1.9L8.46 9.25a.75.75 0 0 1-.92 0L2.5 5.4v7.1h11Z"/></svg><a href="mailto:hk5610504@gmail.com">hk5610504@gmail.com</a></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Zm.75 2.1a5.5 5.5 0 0 1 0 9.8V9.25H11V7.75H8.75V6.5c0-.62.37-1 1.12-1H11V4.1H9.55c-1.5 0-2.3.9-2.3 2.25v1.4H5.8v1.5h1.45v3.65a5.5 5.5 0 0 1 1.5-9.8Z"/></svg><a href="https://www.linkedin.com/in/hasnat-khan-8706222b4" target="_blank" rel="noreferrer">LinkedIn</a></li>
+          </ul>
+          <div class="role-box">
+            <span class="status-dot"></span>
+            <div><strong>Open to roles</strong><span>AI/ML · Retrieval · MLOps</span></div>
+          </div>
+          <div class="profile-actions">
+            <a href="assets/HasnatKhan_CV.pdf">Download résumé</a>
+          </div>
+        </aside>
+
+        <div class="content-column">
+          <section class="tab-panel active" id="overview" role="tabpanel">
+            <article class="readme box">
+              <div class="box-header"><span>README.md</span><a href="assets/HasnatKhan_CV.pdf">View résumé</a></div>
+              <div class="readme-body">
+                <span class="eyebrow">AI / ML · RETRIEVAL · MLOPS</span>
+                <h2>Search systems that work the way people actually write.</h2>
+                <p>I build retrieval and machine-learning systems together with the pipelines that train, evaluate, serve, and monitor them. My strongest work joins careful baselines with interfaces people can run.</p>
+                <div class="proof-grid" aria-label="Selected results">
+                  <div><strong>0.983</strong><span>Recall@10 · Roman-Urdu retrieval</span><small>from 0.192 on the same split</small></div>
+                  <div><strong>189 ms</strong><span>Million-row filter · Rust</span><small>local, without uploading data</small></div>
+                  <div><strong>98.33%</strong><span>News classification</span><small>0.9830 macro-F1 held out</small></div>
+                  <div><strong>5 stages</strong><span>ML lifecycle in one repo</span><small>ingest to monitoring</small></div>
+                </div>
+              </div>
+            </article>
+
+            <div class="section-heading">
+              <h2>Pinned repositories</h2>
+              <button class="text-button" type="button" data-open-tab="repositories">See all repositories →</button>
+            </div>
+            <div class="pinned-grid" id="pinned-repos" aria-live="polite">
+              <div class="loading-card">Loading public work…</div>
+            </div>
+
+            <article class="build-note box">
+              <div class="box-header"><span>Currently building</span><span class="live-label"><i></i> active</span></div>
+              <div class="build-note-body">
+                <div>
+                  <h3>Raabta</h3>
+                  <p>Cross-script retrieval for Roman-Urdu questions over Urdu-script documents, with three retrieval routes, reranking, and explicit abstention.</p>
+                </div>
+                <a class="secondary-button" href="https://github.com/HasnatKhan010/raabta" target="_blank" rel="noreferrer">Inspect source</a>
+              </div>
+            </article>
+          </section>
+
+          <section class="tab-panel" id="repositories" role="tabpanel" hidden>
+            <div class="repo-toolbar">
+              <label class="repo-search">
+                <span class="sr-only">Search repositories</span>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m11.5 10.5 3 3-1 1-3-3a5.5 5.5 0 1 1 1-1ZM7 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" /></svg>
+                <input id="repo-search" type="search" placeholder="Find a repository…" />
+              </label>
+              <select id="language-filter" aria-label="Filter by language"><option value="">All languages</option></select>
+              <select id="repo-sort" aria-label="Sort repositories">
+                <option value="featured">Featured</option>
+                <option value="updated">Recently updated</option>
+                <option value="stars">Most starred</option>
+                <option value="name">Name</option>
+              </select>
+            </div>
+            <p class="repo-status" id="repo-status" aria-live="polite">Loading repositories…</p>
+            <div class="repo-list" id="repo-list"></div>
+          </section>
+
+          <section class="tab-panel" id="experience" role="tabpanel" hidden>
+            <div class="panel-intro">
+              <span class="eyebrow">WORK HISTORY</span>
+              <h2>Built in public, tested against baselines.</h2>
+              <p>Two AI/ML internships and Pakistan's national AI training programme, with links to the work and credentials.</p>
+            </div>
+            <div class="timeline" id="experience-list"></div>
+          </section>
+
+          <section class="tab-panel" id="credentials" role="tabpanel" hidden>
+            <div class="panel-intro">
+              <span class="eyebrow">EDUCATION & SKILLS</span>
+              <h2>The foundations behind the repositories.</h2>
+              <p>Current education, verifiable programmes, and technologies grouped by where they were used.</p>
+            </div>
+            <div class="credential-layout">
+              <div>
+                <h3 class="subheading">Education</h3>
+                <div id="education-list"></div>
+                <h3 class="subheading spaced">Credentials</h3>
+                <div id="certification-list"></div>
+              </div>
+              <aside>
+                <h3 class="subheading">Technical map</h3>
+                <div id="skills-list"></div>
+              </aside>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> Hasnat Khan</span>
+      <span>Built as a static GitHub Pages portfolio.</span>
+      <a href="mailto:hk5610504@gmail.com">Available for AI/ML roles</a>
+    </footer>
+
+    <template id="repo-card-template">
+      <article class="repo-card box">
+        <div class="repo-card-top">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2.75C2 1.78 2.78 1 3.75 1h8.5c.97 0 1.75.78 1.75 1.75v10.5c0 .97-.78 1.75-1.75 1.75h-8.5A1.75 1.75 0 0 1 2 13.25ZM3.5 3v10h9V3Z"/></svg>
+          <a class="repo-name" target="_blank" rel="noreferrer"></a>
+          <span class="visibility">Public</span>
+        </div>
+        <p class="repo-description"></p>
+        <div class="repo-topics"></div>
+        <div class="repo-meta"></div>
+      </article>
+    </template>
+  </body>
+</html>
